@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,9 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Dev Connect | Platform For Web Developers</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/cover/">
+    <title>Dev Connect | Create An Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/sign-in/">
 
     
 
@@ -49,36 +48,26 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Dev Connect</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Dashboard</a>
-        <a class="nav-link" href="#">Log In</a>
-        <a class="nav-link" href="#">Contact Us</a>
-      </nav>
-    </div>
-  </header>
-
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">Welcome to Dev Connect</h1>
-    <p class="lead">This is a website design by web developers for web developers. Sign up to post your best projects and get feedback from other web devs around the world.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Sign Up Now</a>
-    </p>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>Made with love ♥ by Cristobal, Lauren, Evan, and Mike.</p>
-    </div>
-  </footer>
-</div>
+<form class="form-signin">
+  <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Create an account</h1>
+  <label for="inputEmail" class="sr-only">Name</label>
+  <input type="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+  <form>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" aria-describedby="passwordinput">
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2017-2022</p>
+</form>
 
 
     
