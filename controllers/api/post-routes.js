@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { Project, User, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     console.log('======================');
-    Post.findAll({
+    Project.findAll({
         attributes: [
             'id',
-            'post_content',
+            'project_content',
             'title',
             'created_at',
         ],
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'project_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -38,20 +38,20 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Post.findOne({
+    roject.findOne({
         where: {
             id: req.params.id
         },
         attributes: [
             'id',
-            'post_content',
+            'project_content',
             'title',
             'created_at',
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'project_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -63,12 +63,12 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id!' });
+    .then(dbProjectData => {
+        if(!dbProjectData) {
+            res.status(404).json({ message: 'No poroject found with this id!' });
             return;
         }
-        res.json(dbPostData);
+        res.json(dbProjectData);
     })
     .catch(err => {
         console.log(err)
@@ -76,13 +76,13 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/'. withAuth, (req, res) => {
-    Post.create({
+router.project('/'. withAuth, (req, res) => {
+    Project.create({
         title: req.body.title,
-        post_content: req.body.post_content,
+        project_content: req.body.project_content,
         user_id: req.session.user_id
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -90,10 +90,10 @@ router.post('/'. withAuth, (req, res) => {
 });
 
 router.put('/:id', withAuth, (req, res) => {
-    Post.update(
+    Project.update(
         {
             title: req.body.title,
-            post_content: req.body.post_content
+            project_content: req.body.project_content
         },
         {
             where: {
@@ -101,12 +101,12 @@ router.put('/:id', withAuth, (req, res) => {
             }
         }
     )
-        .then(dbPostData => {
-        if (!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
+        .then(dbProjectData => {
+        if (!dbProjectData) {
+            res.status(404).json({ message: 'No project found with this id' });
             return;
         }
-        res.json(dbPostData);
+        res.json(dbProjectData);
     })
         .catch(err => {
         console.log(err);
@@ -116,17 +116,17 @@ router.put('/:id', withAuth, (req, res) => {
 
 router.delete('/:id', withAuth, (req, res) => {
     console.log('id', req.params.id);
-    Post.destroy({
+    Project.destroy({
         where: {
             id: req.params.id
         }  
     })
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id!' });
+    .then(dbProjectData => {
+        if(!dbProjectData) {
+            res.status(404).json({ message: 'No project found with this id!' });
             return;
         }
-        res.json(dbPostData)
+        res.json(dbProjectData)
     })
     .catch(err => {
         console.log(err);

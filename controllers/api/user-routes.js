@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { User, Project, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -20,14 +20,14 @@ router.get('/:id', (req, res) => {
       },
       include: [
         {
-          model: Post,
-          attributes: ['id', 'title', 'post_content', 'created_at']
+          model: Project,
+          attributes: ['id', 'title', 'project_content', 'created_at']
         },
         {
           model: Comment,
           attributes: ['id', 'comment_text', 'created_at'],
           include: {
-            model: Post,
+            model: Project,
             attributes: ['title']
           }
         },
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.project('/', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.project('/login', (req, res) => {
     User.findOne({
       where: {
         email: req.body.email
@@ -95,7 +95,7 @@ router.post('/login', (req, res) => {
     });
 });
   
-router.post('/logout', (req, res) => {
+router.project('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();
