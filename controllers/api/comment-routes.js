@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
             'id',
             'comment_text',
             'user_id',
-            'post_id',
+            'project_id',
             'created_at',
             'updated_at'
         ] 
@@ -20,11 +20,11 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.project('/', withAuth, (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
         user_id: req.session.user_id,
-        post_id: req.body.post_id
+        project_id: req.body.project_id
     })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
