@@ -1,0 +1,62 @@
+<section class="container ">
+  <div class="row pt-0">
+    <a class="text-primary" href="/"> Home</a>
+    <a class="text-primary" href="#"> &nbsp;/ Dashboard</a>
+      <div class="col-12 mt-2">
+        <div class="accordion" id="new-post">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Create New Post
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#new-post">
+              <div class="accordion-body">
+                  <hr />
+                  <form class="new-post-form">
+                    <div class="col-8 form-group">
+                      <label for="post-title" class="font-weight-bold">Title</label>
+                      <input class="form-control" type="text" id="post-title" name="post-title" />
+                    </div>
+                    <div class="col-12 form-group">
+                      <label for="content" class="font-weight-bold">Content</label>
+                      <input type="hidden" id="content" name="content"></input>
+                      <trix-editor class="trix-content" input="content"></trix-editor>
+                    </div>
+                    <div class="col-3 form-group">
+                      <button type="submit" class="btn">Create</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr />
+
+<section class="container">
+  <h2 class="mt-5 mb-5">Your Posts</h2>
+  {{#if posts.length}}
+  <ul>
+    {{#each posts as |post|}}
+    <li class="mb-5">
+      
+      {{> post-info post truncate='truncate' dashboard='dashboard'}}
+      <a class="text-primary" href="/dashboard/edit/{{post.id}}">Edit Post</a>
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p>
+    You don't have any post yet. Start now!
+  </p>
+  {{/if}}
+
+</section>
+
+
+
+<script src="/js/add-post.js"></script>
