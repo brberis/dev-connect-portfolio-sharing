@@ -1,0 +1,65 @@
+<section class="container ">
+  <div class="row pt-3">
+    <a class="text-primary" href="/"> Home</a>
+    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
+    <a class="text-primary" href="#"> &nbsp;/ Edit</a>
+    <div class="col-12 mt-2">
+      <h2 class="mt-2 mb-3">
+        Edit Post
+      </h2>
+      <form class="edit-post-form">
+        <div class="col-12 form-group">        
+        <label for="post-title" class="font-weight-bold">Title</label>
+          <input class="form-control" name="post-title" type="text" value="{{post.title}}" />
+        </div>
+        <div class="col-12 form-group">
+          <label for="content" class="font-weight-bold">Content</label>
+          <input type="hidden" value="{{post.content}}" id="content" name="content"></input>
+          <trix-editor class="trix-content" input="content"></trix-editor>
+        </div>
+        <div>
+          By you on {{format_date post.created_at}}
+          |
+          <a class="text-primary" href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+        </div>
+
+        <div class="form-inline justify-content-end">
+          <div class="col-3">
+            <button type="button" class="delete-post-btn btn">Delete post</button>
+          </div>
+          <div class="col-3">
+            <button type="submit" class="edit-post-form btn">Save post</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      <form class="comment-form">
+        <div class="col-9 form-group">
+          <textarea class="form-control"  name="comment-body"></textarea>
+        </div>
+
+        <div class="col-3 form-group">
+          <button class="comment-form btn" type="submit">Add Comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      {{> comments post.comments}}
+    </div>
+  </div>
+</section>
+
+<script src="/js/edit-post.js"></script>
+<script src="/js/delete-post.js"></script>
+<script src="/js/comment.js"></script>
