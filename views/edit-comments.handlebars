@@ -1,0 +1,27 @@
+<section class="container ">
+  <div class="row pt-3">
+    <a class="text-primary" href="/"> Home</a>
+    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
+    <a class="text-primary" href="#"> &nbsp;/ Edit</a>
+    <div class="col-12 mt-2">
+      <h2 class="mt-2 mb-3">
+        Edit Comment
+      </h2>
+      <form class="edit-comment-form">
+        <div class="col-12 form-group">
+          <label for="content" class="font-weight-bold">Comment</label>
+          <input type="hidden" value="{{comment.post_id}}" id="content" name="postId"></input>
+          <textarea class="form-control" name="commentText">{{comment.comment_text}}</textarea>
+        </div>
+        <div class="form-inline justify-content-end">
+          <div class="col-3">
+            <button type="submit" class="edit-comment-form btn">Save comment</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="/js/edit-comment.js"></script>
