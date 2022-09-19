@@ -21,7 +21,16 @@ router.get('/:id', (req, res) => {
       include: [
         {
           model: Project,
-          attributes: ['id', 'title', 'project_content', 'created_at']
+          attributes: [
+            'id',
+            'title',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
+            'created_at'
+          ]
         },
         {
           model: Comment,
@@ -46,7 +55,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.project('/', (req, res) => {
+router.post('/', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
@@ -67,7 +76,7 @@ router.project('/', (req, res) => {
     });
 });
 
-router.project('/login', (req, res) => {
+router.post('/login', (req, res) => {
     User.findOne({
       where: {
         email: req.body.email
@@ -95,7 +104,7 @@ router.project('/login', (req, res) => {
     });
 });
   
-router.project('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();

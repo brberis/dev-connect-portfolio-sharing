@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../../models');
+const { Project, User, Comment, Vote } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -8,9 +8,13 @@ router.get('/', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
-            'project_content',
             'title',
-            'created_at',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
+            'created_at'
         ],
         order: [['created_at', 'DESC']],
         include: [
@@ -38,15 +42,20 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    roject.findOne({
+    Project.findOne({
         where: {
             id: req.params.id
         },
         attributes: [
             'id',
-            'project_content',
             'title',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
             'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE project.id = vote.project_id)'), 'vote_count']
         ],
         include: [
             {
@@ -59,7 +68,7 @@ router.get('/:id', (req, res) => {
             },
             {
                 model: User,
-                attributes: 'username'
+                attributes: ['username']
             }
         ]
     })
@@ -76,11 +85,14 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.project('/'. withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Project.create({
         title: req.body.title,
-        project_content: req.body.project_content,
-        user_id: req.session.user_id
+        image_url: req.body.image_url,
+        description: req.body.description,
+        date: req.body.date,
+        public: req.body.public,
+        user_id: req.session.user_id,
     })
     .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {
@@ -93,7 +105,10 @@ router.put('/:id', withAuth, (req, res) => {
     Project.update(
         {
             title: req.body.title,
-            project_content: req.body.project_content
+            image_url: req.body.image_url,
+            description: req.body.description,
+            date: req.body.date,
+            public: req.body.public,
         },
         {
             where: {
@@ -133,5 +148,16 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
+router.put('/upvote', withAuth, (req, res) => {
+    // custom static method created in models/Project.js
+    Project.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+      .then(updatedVoteData => res.json(updatedVoteData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
 
 module.exports = router;

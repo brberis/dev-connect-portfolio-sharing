@@ -12,9 +12,13 @@ router.get('/', withAuth, (req, res) => {
         },
         attributes: [
             'id',
-            'project_content',
             'title',
-            'created_at',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
+            'created_at'
         ],
         include: [
             {
@@ -46,9 +50,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id',
-            'project_content',
+        attributes: [
+            'id',
             'title',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
             'created_at'
         ],
         include: [
