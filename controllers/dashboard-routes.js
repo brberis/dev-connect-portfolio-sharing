@@ -1,10 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Project, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
+    console.log(req.session);
     console.log('======================');
     Project.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
             'id',
             'project_content',
@@ -23,15 +28,12 @@ router.get('/', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
-            }    
+            }
         ]
     })
     .then(dbProjectData => {
-        const projects = dbProjectData.map(project => project.get({ plain: true }));
-        res.render('homepage', {
-            projects,
-            loggedIn: req.session.loggedIn
-        });
+        const projects = dbProjectData.map(project => projectt.get({ plain: true }));
+        res.render('dashboard', { projects, loggedIn: true, username: req.session.username });
     })
     .catch(err => {
         console.log(err);
@@ -39,57 +41,46 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/project/:id', (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {
             id: req.params.id
         },
-        attributes: [
-            'id',
+        attributes: ['id',
             'project_content',
             'title',
-            'created_at',
+            'created_at'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
         ],
         include: [
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'project_id', 'user_id', 'created_at'],
                 include: {
-                  model: User,
-                  attributes: ['username']
+                    model: User,
+                    attributes: ['username']
                 }
-            },
-            {
-                model: User,
-                attributes: ['username']
             }
         ]
     })
     .then(dbProjectData => {
-        if (!dbProjectData) {
-            res.status(404).json({ message: 'No project found under this id' });
-            return;
-        }
-        const project = dbPprojectData.get({ plain: true });
+        if (!dbProjectData) return res.status(404).json({ message: 'No project found with this id' });
 
-        res.render('single-project', {
+        const project = dbProjectData.get({ plain: true })
+        res.render('edit-project', {
             project,
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         });
     })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
-});
-
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-
-    res.render('login');
 });
 
 module.exports = router;
