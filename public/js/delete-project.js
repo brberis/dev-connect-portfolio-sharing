@@ -1,15 +1,15 @@
-// Get all Post from User
-async function getFormHandler(event) {
+// delete project handler
+async function editFormHandler(event) {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="post-title"]').value.trim();
+    const title = document.querySelector('input[name="project-title"]').value.trim();
     const content = document.querySelector('input[name="content"]');
   
     const id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
-    const response = await fetch(`/api/posts/${id}`, {
-      method: 'GET',
+    const response = await fetch(`/api/projects/${id}`, {
+      method: 'DELETE',
       body: JSON.stringify({
         title,
         content: content.value
@@ -26,4 +26,4 @@ async function getFormHandler(event) {
     }
   }
   
-  document.querySelector('.my-post-form').addEventListener('submit', getFormHandler);
+  document.querySelector('.delete-project-form').addEventListener('submit', editFormHandler);

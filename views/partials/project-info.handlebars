@@ -1,0 +1,18 @@
+<article class="post">
+  <div class="title">
+    {{#if dashboard }}
+    <h4><a class="text-dark" href="/dashboard/my-projects/{{id}}">{{title}} </a></h4>
+    {{else}}
+    <h4><a class="text-dark" href="/projects/{{id}}">{{title}}</a></h4>
+    {{/if}}
+  </div>
+  <div class="content">
+    <p {{#if truncate}} class="truncate" {{/if}}>{{{truncate_html content}}}</p>
+  </div>
+  <div class="font-italic">
+    by <span class="font-weight-bold">{{user.username}}</span> on {{format_date created_at}}
+    |
+    <a href="/projects/{{id}}" class="text-primary">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  </div>
+</article>
+<hr />
