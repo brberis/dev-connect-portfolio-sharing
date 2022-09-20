@@ -65,4 +65,4 @@ Project.hasMany(Vote, {
   foreignKey: 'project_id'
 });
 
-module.exports = { User, Project, Comment };
+module.exports = { User, Project, Comment, Vote };

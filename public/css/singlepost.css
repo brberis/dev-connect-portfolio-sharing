@@ -1,0 +1,107 @@
+body {
+    background-color: rgb(73, 26, 116);
+    font-family: 'Inconsolata', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    color: white;
+}
+
+.blog-post-meta a {
+    color: white;
+}
+
+.blog-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 30px;
+}
+
+.blog-post-meta {
+    font-size: 20px;
+}
+
+.blog-post .links {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: row;
+    font-size: 15px;
+}
+
+.blog-text {
+    width: 500px;
+    font-size: 20px;
+}
+
+h2 {
+    color: gray;
+    font-size: 30px;
+}
+.text-center h3 {
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 40px;
+}
+
+.text-center p {
+    color: gray;
+}
+
+.text-center h1 {
+    color: black;
+}
+
+.text-center a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.inner-cover {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav {
+    float: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.inner p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 0;
+}

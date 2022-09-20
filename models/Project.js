@@ -2,7 +2,41 @@ const sequelize = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
 
 // create project model
-class Project extends Model {}
+class Project extends Model {
+  static upvote(body, models) {
+    return models.Vote.create({
+      user_id: body.user_id,
+      project_id: body.project_id
+    }).then(() => {
+      return Project.findOne({
+        where: {
+          id: body.project_id
+        },
+        attributes: [
+          'id',
+          'title',
+          'image_url',
+          'description',
+          'date',
+          'public',
+          'user_id',
+          'created_at'
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE project.id = vote.project_id)'), 'vote_count']
+        ],
+        include: [
+          {
+            model: models.Comment,
+            attributes: ['id', 'comment_text', 'project_id', 'user_id', 'created_at'],
+            include: {
+              model: models.User,
+              attributes: ['username']
+            }
+          }
+        ]
+      });
+    });
+  }
+}
 
 // create fields for project model
 Project.init(

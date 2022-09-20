@@ -7,8 +7,12 @@ router.get('/', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
-            'project_content',
             'title',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
             'created_at',
         ],
         include: [
@@ -46,8 +50,12 @@ router.get('/project/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'project_content',
             'title',
+            'image_url',
+            'description',
+            'date',
+            'public',
+            'user_id',
             'created_at',
         ],
         include: [
