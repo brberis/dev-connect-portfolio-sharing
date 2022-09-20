@@ -7,7 +7,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Create New Post
+                Create New Project
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#new-post">
@@ -38,14 +38,14 @@
 <hr />
 
 <section class="container">
-  <h2 class="mt-5 mb-5">Your Posts</h2>
-  {{#if posts.length}}
+  <h2 class="mt-5 mb-5">Your Projects</h2>
+  {{#if projects.length}}
   <ul>
-    {{#each posts as |post|}}
+    {{#each projects as |project|}}
     <li class="mb-5">
       
-      {{> post-info post truncate='truncate' dashboard='dashboard'}}
-      <a class="text-primary" href="/dashboard/edit/{{post.id}}">Edit Post</a>
+      {{> project-info project truncate='truncate' dashboard='dashboard'}}
+      <a class="text-primary" href="/dashboard/edit/{{projects.id}}">Edit Project</a>
     </li>
     {{/each}}
   </ul>

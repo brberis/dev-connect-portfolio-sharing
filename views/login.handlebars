@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+{{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 <!doctype html>
@@ -56,7 +56,7 @@
 
 <body class="text-center">
 
-    <form class="form-signin">
+    <form class="form-signin login-form">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -74,8 +74,38 @@
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2022</p>
     </form>
 
-
+<script
 
 </body>
 
-</html>
+</html> --}}
+
+{{!-- sign-in form --}}
+<section class="container ">
+  <div class="row pt-3">
+    <div class="col-6">
+      <h2>Login</h2>
+      <hr />
+      <form class="login-form">
+        <div class="form-group">
+          <label for="email-login">Email:</label>
+          <input class="form-control" type="text" id="email-login" />
+        </div>
+        <div class="form-group">
+          <label for="password-login">Password:</label>
+          <input class="form-control" type="password" id="password-login" />
+        </div>
+        <div class="form-group">
+          <button class="btn" type="submit">Login</button>
+        </div>
+        <div>
+          <p>
+            Do not have an account? <a href="/signup" role="button" class="text-primary font-weight-bold">Sign-up Here!</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="/js/login.js"></script>

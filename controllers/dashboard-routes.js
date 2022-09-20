@@ -18,7 +18,7 @@ router.get('/', withAuth, (req, res) => {
             'date',
             'public',
             'user_id',
-            'created_at'
+            'created_at',
         ],
         include: [
             {
@@ -36,7 +36,7 @@ router.get('/', withAuth, (req, res) => {
         ]
     })
     .then(dbProjectData => {
-        const projects = dbProjectData.map(project => projectt.get({ plain: true }));
+        const projects = dbProjectData.map(project => project.get({ plain: true }));
         res.render('dashboard', { projects, loggedIn: true, username: req.session.username });
     })
     .catch(err => {
@@ -58,7 +58,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             'date',
             'public',
             'user_id',
-            'created_at'
+            'created_at',
         ],
         include: [
             {
@@ -91,5 +91,39 @@ router.get('/edit/:id', withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
+// get comment to edit
+router.get('/comment/edit/:id', withAuth, (req, res) => {
+    Comment.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id
+      },
+      attributes: [
+        'id',
+        'comment_text',
+        'project_id',
+        'created_at',
+      ],
+      include: {
+        model: User,
+        attributes: ['username']
+      }
+    })
+      .then(dbCommentData => {
+        if (dbCommentData) {
+          const comment = dbCommentData.get({ plain: true });
+          res.render('edit-comment', {
+            comment,
+            loggedIn: true
+          });
+        } else {
+          res.status(404).end();
+        }
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  });
 
 module.exports = router;
