@@ -1,10 +1,11 @@
+//Add Project
 async function newFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('input[name="post-title"]').value;
-    const post_content = document.querySelector('#post_content').value;
+    const title = document.querySelector('input[name="project-title"]').value;
+    const post_content = document.querySelector('#project_content').value;
 
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/projects`, {
         method: 'POST',
         body: JSON.stringify({
             title,
@@ -22,4 +23,4 @@ async function newFormHandler(event) {
     }
 }
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-project-form').addEventListener('submit', newFormHandler);
