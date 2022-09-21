@@ -1,8 +1,67 @@
+/* HOME PAGE */
+
+body {
+    background-color: rgb(73, 26, 116);
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: rgb(255, 255, 255);
+}
+
+.text-center h3 {
+    color: darkgrey;
+}
+
+.text-center p {
+    color: darkgrey;
+}
+
+.text-center h1 {
+    color: black;
+}
+
+.inner-cover {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: white;
+    font-size: 24px;
+}
+
+.btn {
+    background-color: rgb(73, 26, 116);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.hero {
+    height: 550px;
+}
+
+/* 
 body {
     background-color: rgb(73, 26, 116);
     font-family: 'Inconsolata', monospace;
     margin: 0;
     padding: 0;
+}
+
+main {
+    background-color: rgb(213, 194, 232);
 }
 
 .text-center .h3 {
@@ -59,4 +118,5 @@ p {
     font-size: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-}
+} */
+
