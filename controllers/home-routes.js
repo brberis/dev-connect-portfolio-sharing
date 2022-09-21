@@ -5,7 +5,10 @@ const { Project, User, Comment } = require('../models');
 router.get('/', (req, res) => {
     console.log('======================');
     Project.findAll({
-        attributes: [
+        where: {
+            public: true
+          },        
+          attributes: [
             'id',
             'title',
             'image_url',
@@ -101,5 +104,15 @@ router.get('/login', (req, res) => {
 
     res.render('login');
 });
+
+router.get('/sign-up', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
+});
+
 
 module.exports = router;

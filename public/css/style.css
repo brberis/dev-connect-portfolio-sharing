@@ -8,6 +8,7 @@ body {
   padding: 0;
 }
 
+
 main {
   background-color: rgb(255, 255, 255);
 }
@@ -50,6 +51,10 @@ main {
 
 .hero {
   height: 550px;
+}
+
+.sm-hero {
+  height: 100px;
 }
 
 
@@ -124,12 +129,29 @@ article h4 {
   color: white;
   margin-top: 7px;
   font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.form-text {
+  font-size: 18px;
+}
+
+.log-form {
+  max-width: 500px;
+  margin-bottom: 100px;
+}
+
+.add-project{
+  text-align: left;
+  font-size: medium;
 }
 
 footer {
   color: white;
   padding: 50px;
 }
+
+
 
 /* 
 body {

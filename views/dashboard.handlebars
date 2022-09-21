@@ -2,35 +2,48 @@
   <div class="row pt-0">
     <a class="text-primary" href="/"> Home</a>
     <a class="text-primary" href="#"> &nbsp;/ Dashboard</a>
-      <div class="col-12 mt-2">
-        <div class="accordion" id="new-post">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Create New Project
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#new-post">
-              <div class="accordion-body">
-                  <hr />
-                  <form class="new-post-form">
-                    <div class="col-8 form-group">
-                      <label for="post-title" class="font-weight-bold">Title</label>
-                      <input class="form-control" type="text" id="post-title" name="post-title" />
-                    </div>
-                    <div class="col-8 form-group">
-                      <label for="image-url" class="font-weight-bold">Screenshot</label>
-                      <input class="form-control" type="text" id="image-url" name="image-url" />
-                    </div>
-                    <div class="col-12 form-group">
-                      <label for="description" class="font-weight-bold">Content2</label>
-                      <input type="hidden" id="description" name="description"></input>
-                      <trix-editor class="trix-content" input="description"></trix-editor>
-                    </div>
-                    <div class="col-3 form-group">
-                      <button type="submit" class="btn">Create</button>
-                    </div>
-                  </form>
+    <div class="col-12 mt-2">
+      <div class="accordion" id="new-post">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Create New Project
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#new-post">
+            <div class="accordion-body">
+              <div class="add-project">
+                <hr />
+                <form class="new-project-form">
+                  <div class="col-8 form-group">
+                    <label for="project-title" class="font-weight-bold">Title</label>
+                    <input class="form-control" type="text" id="project-title" name="project-title" />
+                  </div>
+                  <div class="col-8 form-group">
+                    <label for="image-url" class="font-weight-bold">Screenshot</label>
+                    <input class="form-control" type="text" id="image-url" placeholder="Image URL" name="image-url" />
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="description" class="font-weight-bold">Description</label>
+                    <input type="hidden" id="description" name="description"></input>
+                    <trix-editor class="trix-content" input="description"></trix-editor>
+                  </div>
+                  <div class="col-8 form-group">
+                    <label for="date" class="font-weight-bold">Date</label>
+                    <input type="date" id="date" name="date"></input>
+                  </div>
+                  <div class="col-8 form-group">
+                    <label for="github-url" class="font-weight-bold">GitHub URL</label>
+                    <input class="form-control" type="text" id="github-url" placeholder="" name="github-url" />
+                  </div>
+                  <div class="col-8 form-group">
+                    <label for="public" class="font-weight-bold">Public</label>
+                    <input type="checkbox" id="public" name="public">
+                  </div>
+                  <div class="col-3 form-group">
+                    <button type="submit" class="btn">Create</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -42,7 +55,7 @@
 <hr />
 
 <section class="container">
-  <h2 class="mt-5 mb-5">Your Projects</h2>
+  <h2 class="mt-5 mb-5">Your Portfolio</h2>
   {{#if projects.length}}
   <ul>
     {{#each projects as |project|}}
@@ -54,13 +67,12 @@
     {{/each}}
   </ul>
   {{else}}
-  <p>
-    You don't have any post yet. Start now!
+  <p class="mb-5">
+    You don't have any project yet. Start now!
   </p>
   {{/if}}
 
 </section>
 
 
-
-<script src="/js/add-post.js"></script>
+<script src="/js/add-project.js"></script>
