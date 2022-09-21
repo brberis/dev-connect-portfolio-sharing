@@ -81,11 +81,12 @@ article {
   }
   
 .article-detail {
+  padding-left: 0px;
   width: 48%;
   min-width: 180px;
   height: 230px;
   overflow: hidden;
-  margin: 15px;
+  margin: 5px;
   background-color: rgb(231, 230, 233);
   border: 5px solid rgb(236, 217, 254);
   position: relative;
