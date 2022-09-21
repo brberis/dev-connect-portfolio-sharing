@@ -89,8 +89,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* flex-direction: column; */
-    margin-bottom: 0;
+    flex-direction: column; 
 }
 
 .inner p {
@@ -100,3 +99,15 @@ h2 {
     flex-direction: column;
     margin-bottom: 0;
 }
+
+.username {
+    color: white;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 20px;
+}
+

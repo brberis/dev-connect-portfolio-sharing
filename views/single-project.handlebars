@@ -1,4 +1,20 @@
-<section class="container ">
+<div class="blog-post">
+        <!-- <p class="links" ><a href='#'>Home</a>/<a href='#'>Post</a></p> -->
+        <h2 class="blog-post-title" aria-placeholder="Title">{{project.title}}</h2>
+        <p class="blog-post-meta">{{format_date project.date}} by <a href="#">{{project.user.username}}</a></p>
+        <div class="blog-text">
+        <div class="img" alt="image">{{project.image_url}}</div>
+        <p class="content" aria-placeholder="Blog post here">{{project.description}}</p>
+        <div class="username">
+        <p>{{project.github_url}}</p>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="index.js"></script>
+
+{{!-- <section class="container ">
   <div class="row pt-0">
     <a class="text-primary" href="/"> Home</a>
     <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
@@ -88,4 +104,4 @@
 <script src="/js/edit-project.js"></script>
 <script src="/js/delete-project.js"></script>
 <script src="/js/comment.js"></script>
-{{/if}}
+{{/if}} --}}
