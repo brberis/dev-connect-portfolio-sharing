@@ -15,10 +15,11 @@ router.get('/', withAuth, (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
-            'created_at',
+            'created_at'
         ],
         include: [
             {
@@ -55,10 +56,11 @@ router.get('/edit/:id', withAuth, (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
-            'created_at',
+            'created_at'
         ],
         include: [
             {

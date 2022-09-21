@@ -1,0 +1,91 @@
+<section class="container ">
+  <div class="row pt-0">
+    <a class="text-primary" href="/"> Home</a>
+    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
+    <a class="text-primary" href="#"> &nbsp;/ My project</a>
+    <div class="col-12 mt-2">
+      <article class="project">
+        <div class="title">
+          
+          <h4>{{project.title}}</h4>
+        </div>
+        <div class="content">
+          <p>{{{project.content}}}</p>
+        </div>
+        <div class="font-italic">
+          by <span class="font-weight-bold">{{project.user.username}}</span> on {{format_date project.created_at}}
+          |
+          <a href="/project/{{project.id}}" class="text-primary">{{project.comments.length}} {{format_plural "comment" project.comments.length}}</a>
+        </div>
+        <div class="form-inline justify-content-end">
+          <div class="col-2">
+            <button type="button" class="delete-project-btn btn btn-sm">Delete project</button>
+          </div>
+          <div class="col-2">
+            <button type="submit" class="edit-project-form btn btn-sm" onclick="location.href='/dashboard/edit/{{project.id}}';">Edit project</button>
+          </div>
+        </div>
+      </article>
+      <hr />
+    </div>
+  </div>
+</section>
+
+{{!-- partial wont work with comment_owner helper / create extra empty loop in #each --}}
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      {{#if project.comments}}
+      <h4 class="mb-3">Comments</h4>
+      <div class="comments">
+        {{#each project.comments}}
+        <section class="comment p-3 bg-comment">
+          <div class="meta">
+            <span class="font-weight-bold">{{user.username}}</span> on {{format_date created_at}}
+          </div>
+          <div class="text">
+            {{comment_text}}
+          </div>
+          {{#if (comment_owner ../loggedUser user.username)}}
+          <div>
+            <span><a class="text-primary" href="?comment={{id}}&d=true">Delete</a></span> / <span><a class="text-primary" href="/dashboard/comment/edit/{{id}}">Edit</a></span>
+            <script src="/js/action-comment.js"></script>
+          </div>
+          {{/if}}
+        </section>
+        {{/each}}
+      </div>
+      {{else}}
+        {{#if loggedIn}}
+        <h4>Be the first to comment <a href="/login"></a></h4>
+        {{else}}
+        <h5><a class="text-primary" href="/login">Login here</a> to comment</h5>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</section>
+
+
+{{#if loggedIn}}
+<section class="container mt-5">
+  <div class="row pt-3">
+    <div class="col-12">
+      <form class="comment-form">
+        <div class="col-9 form-group">
+          <textarea class="form-control"  name="comment-body"></textarea>
+        </div>
+
+        <div class="col-3 form-group">
+          <button class="comment-form btn" type="submit">Add Comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{{/if}}
+{{#if loggedIn}}
+<script src="/js/edit-project.js"></script>
+<script src="/js/delete-project.js"></script>
+<script src="/js/comment.js"></script>
+{{/if}}

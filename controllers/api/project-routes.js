@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
@@ -51,10 +52,11 @@ router.get('/:id', (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
-            'created_at',
+            'created_at'
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE project.id = vote.project_id)'), 'vote_count']
         ],
         include: [
@@ -91,6 +93,7 @@ router.post('/', withAuth, (req, res) => {
         image_url: req.body.image_url,
         description: req.body.description,
         date: req.body.date,
+        github_url: req.body.github_url,
         public: req.body.public,
         user_id: req.session.user_id,
     })

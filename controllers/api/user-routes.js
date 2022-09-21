@@ -26,6 +26,7 @@ router.get('/:id', (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
