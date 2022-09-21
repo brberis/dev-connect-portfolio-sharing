@@ -27,6 +27,14 @@ body {
 }
 
 .blog-post-meta {
+    color: white;
+}
+
+.blog-post .content {
+    font-size: 20px;
+    color: darkgrey;
+}
+.blog-post-meta {
     font-size: 20px;
 }
 
@@ -44,11 +52,12 @@ body {
 }
 
 h2 {
-    color: gray;
+    color: darkgrey;
     font-size: 30px;
 }
+
 .text-center h3 {
-    color: gray;
+    color: darkgrey;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,21 +66,7 @@ h2 {
 }
 
 .text-center p {
-    color: gray;
-}
-
-.text-center h1 {
-    color: black;
-}
-
-.text-center a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    color: darkgrey;
 }
 
 .inner-cover {
@@ -94,7 +89,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     margin-bottom: 0;
 }
 
