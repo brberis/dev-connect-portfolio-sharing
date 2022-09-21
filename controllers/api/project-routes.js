@@ -111,7 +111,9 @@ router.put('/:id', withAuth, (req, res) => {
             image_url: req.body.image_url,
             description: req.body.description,
             date: req.body.date,
+            github_url: req.body.github_url,
             public: req.body.public,
+
         },
         {
             where: {

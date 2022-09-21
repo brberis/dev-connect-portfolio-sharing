@@ -1,55 +1,133 @@
 /* HOME PAGE */
 
 body {
-    background-color: rgb(73, 26, 116);
-    font-family: 'Inconsolata', monospace;
-    font-size: 1.5em;
-    margin: 0;
-    padding: 0;
+  background-color: rgb(73, 26, 116);
+  font-family: 'Inconsolata', monospace;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
 }
 
 main {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 .text-center h3 {
-    color: darkgrey;
+  color: darkgrey;
 }
 
 .text-center p {
-    color: darkgrey;
+  color: darkgrey;
 }
 
 .text-center h1 {
-    color: black;
+  color: black;
 }
 
 .inner-cover {
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .nav-link {
-    color: white;
-    font-size: 24px;
+  color: white;
+  font-size: 24px;
 }
 
 .btn {
-    background-color: rgb(73, 26, 116);
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
+  background-color: rgb(73, 26, 116);
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .hero {
-    height: 550px;
+  height: 550px;
+}
+
+
+.title {
+  display: block;
+  width: 100%;
+}
+
+.project-streamer {
+  margin-top: 50px;
+  padding: 50px;
+  background-color: aliceblue;
+  width: 100%;
+  flex-wrap: wrap;
+
+}
+
+/* project streamer */
+.main-content {
+  border-left: 3px solid var(--text-color);
+  padding-left: 30px;
+  flex: 1;
+  }
+
+
+article {
+  justify-content:space-evenly
+
+  }
+  
+.article-detail {
+  width: 48%;
+  min-width: 180px;
+  height: 230px;
+  overflow: hidden;
+  margin: 15px;
+  background-color: rgb(231, 230, 233);
+  border: 5px solid rgb(236, 217, 254);
+  position: relative;
+}
+  
+article img {
+  width: 600px;
+  height: 400px;
+  margin-top: -100px;
+  opacity: 0.45;
+}
+
+  
+article img:hover {
+  opacity: 1;
+}
+  
+.article-info {
+  position: absolute;
+  bottom: 0px;
+  background-color: rgb(75, 65, 83);
+  opacity: 1;
+  padding-left: 5px;
+  padding-right: 10px;
+  color: white;
+  width: 100%;
+  height: 40%;
+  -webkit-mask: linear-gradient(#0000, 2%, #000);
+  mask: linear-gradient(#0000, 2%, #000);
+  
+
+}
+  
+article h4 {
+  color: white;
+  margin-top: 7px;
+  font-size: 22px;
+}
+
+footer {
+  color: white;
+  padding: 50px;
 }
 
 /* 
