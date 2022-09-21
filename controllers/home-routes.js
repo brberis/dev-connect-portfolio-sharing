@@ -43,6 +43,15 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+
+    res.render('login');
+});
+
 router.get('/project/:id', (req, res) => {
     Project.findOne({
         where: {
@@ -91,13 +100,6 @@ router.get('/project/:id', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
 
-    res.render('login');
-});
 
 module.exports = router;
