@@ -17,6 +17,7 @@ class Project extends Model {
           'title',
           'image_url',
           'description',
+          'github_url',
           'date',
           'public',
           'user_id',
@@ -61,6 +62,13 @@ Project.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    github_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true
+      }
     },
     date: {
       type: DataTypes.DATE,

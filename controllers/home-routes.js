@@ -10,10 +10,11 @@ router.get('/', (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
-            'created_at',
+            'created_at'
         ],
         include: [
             {
@@ -53,10 +54,11 @@ router.get('/project/:id', (req, res) => {
             'title',
             'image_url',
             'description',
+            'github_url',
             'date',
             'public',
             'user_id',
-            'created_at',
+            'created_at'
         ],
         include: [
             {
@@ -78,7 +80,7 @@ router.get('/project/:id', (req, res) => {
             res.status(404).json({ message: 'No project found under this id' });
             return;
         }
-        const project = dbPprojectData.get({ plain: true });
+        const project = dbProjectData.get({ plain: true });
 
         res.render('single-project', {
             project,
