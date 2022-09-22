@@ -5,7 +5,6 @@ const { Project, User, Comment } = require('../models');
 
 // get by developer username
 router.get('/:username', (req, res) => {
-    console.log(req.session);
     Project.findAll({
         where: {
             user_id:{

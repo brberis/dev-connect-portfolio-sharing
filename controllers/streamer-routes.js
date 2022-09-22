@@ -4,8 +4,12 @@ const { Project, User, Comment } = require('../models');
 
 // get all public projects
 router.get('/', (req, res) => {
-    console.log(req.session);
-    console.log('======================');
+    let loggedIn = false;
+    if(req.session.user) {
+        loggedIn = true;
+
+      }
+      
     Project.findAll({
         where: {
             public: true
@@ -42,7 +46,7 @@ router.get('/', (req, res) => {
     })
     .then(dbProjectData => {
         const projects = dbProjectData.map(project => project.get({ plain: true }));
-        res.render('streamer', { projects, username: req.session.username });
+        res.render('streamer', { projects, loggedIn: loggedIn, username: req.session.username });
     })
     .catch(err => {
         console.log(err);
