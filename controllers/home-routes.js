@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Project, User, Comment } = require('../models');
 
+// get last 4 public projects
 router.get('/', (req, res) => {
     console.log('======================');
     Project.findAll({
@@ -51,6 +52,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get public project by id
 router.get('/project/:id', (req, res) => {
     Project.findOne({
         where: {
@@ -111,6 +113,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// user registration
 router.get('/sign-up', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');

@@ -67,7 +67,7 @@
 
 
 {{#if loggedIn}}
-<section class="container mt-5">
+<section class="container mt-5 mb-5">
   <div class="row pt-3">
     <div class="col-12">
       <form class="comment-form">
@@ -84,6 +84,10 @@
     </div>
   </div>
 </section>
+{{else}}
+<div class="m-5">
+  <h5><a class="text-primary" href="/login">Login here</a> to comment</h5>  
+</div>
 {{/if}}
 {{#if loggedIn}}
 <script src="/js/comment.js"></script>

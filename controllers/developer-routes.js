@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Op } = require("sequelize");
 const { Project, User, Comment } = require('../models');
 
-// get by developer
+// get by developer username
 router.get('/:username', (req, res) => {
     console.log(req.session);
     Project.findAll({

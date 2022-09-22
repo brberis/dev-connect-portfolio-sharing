@@ -3,6 +3,7 @@ const { Project, User, Comment, Vote } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
+// get all projects
 router.get('/', (req, res) => {
     console.log('======================');
     Project.findAll({
@@ -42,6 +43,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get project by id
 router.get('/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {
@@ -87,6 +89,7 @@ router.get('/:id', withAuth, (req, res) => {
     });
 });
 
+// post project
 router.post('/', withAuth, (req, res) => {
     Project.create({
         title: req.body.title,
@@ -104,6 +107,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+// update project
 router.put('/:id', withAuth, (req, res) => {
     Project.update(
         {
@@ -134,6 +138,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+// delete project
 router.delete('/:id', withAuth, (req, res) => {
     console.log('id', req.params.id);
     Project.destroy({
@@ -154,6 +159,7 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
+// up vote a project
 router.put('/upvote', withAuth, (req, res) => {
     // custom static method created in models/Project.js
     Project.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })

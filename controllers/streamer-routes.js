@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Project, User, Comment } = require('../models');
 
+// get all public projects
 router.get('/', (req, res) => {
     console.log(req.session);
     console.log('======================');

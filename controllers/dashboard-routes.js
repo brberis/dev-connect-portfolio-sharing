@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 const { Project, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// get all projects
 router.get('/', withAuth, (req, res) => {
     console.log(req.session);
     console.log('======================');
@@ -46,6 +47,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+// get project by id
 router.get('/projects/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {
@@ -95,6 +97,7 @@ router.get('/projects/:id', withAuth, (req, res) => {
     });
 });
 
+// edit project by id
 router.get('/edit/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {
