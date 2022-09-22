@@ -113,7 +113,7 @@ article {
 
 article img {
   width: 600px;
-  height: 400px;
+  height: auto;
   margin-top: -100px;
   opacity: 0.45;
 }
