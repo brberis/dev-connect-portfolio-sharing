@@ -15,7 +15,7 @@ The technologies used within our project include html, javascript, css,  handleb
 
 ## Screenshot
 
-![alt screenshot](https://brberis.github.io/dev-connect-portfolio-sharing/assets/images/web.png)
+![alt screenshot](https://github.com/brberis/dev-connect-portfolio-sharing/blob/main/assets/images/web.png?raw=true)
 
 ## Table of Contents
 
