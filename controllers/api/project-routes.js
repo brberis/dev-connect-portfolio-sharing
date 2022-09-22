@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {
             id: req.params.id
@@ -57,7 +57,12 @@ router.get('/:id', (req, res) => {
             'public',
             'user_id',
             'created_at'
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE project.id = vote.project_id)'), 'vote_count']
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
         ],
         include: [
             {
@@ -67,22 +72,17 @@ router.get('/:id', (req, res) => {
                     model: User,
                     attributes: ['username']
                 }
-            },
-            {
-                model: User,
-                attributes: ['username']
             }
         ]
     })
     .then(dbProjectData => {
-        if(!dbProjectData) {
-            res.status(404).json({ message: 'No poroject found with this id!' });
-            return;
-        }
-        res.json(dbProjectData);
+        if (!dbProjectData) return res.status(404).json({ message: 'No project found with this id' });
+
+        const project = dbProjectData.get({ plain: true })
+        res.json(dbProjectData)
     })
     .catch(err => {
-        console.log(err)
+        console.log(err);
         res.status(500).json(err);
     });
 });

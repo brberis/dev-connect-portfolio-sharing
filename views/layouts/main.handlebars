@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>  
 
     <!-- Bootstrap core CSS -->
@@ -26,13 +28,15 @@
         <div class="inner">
           <h3 class="masthead-brand">Dev Connect</h3>
           <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link active" href="/streamer">Project Streamer</a>
             <a class="nav-link active" href="/dashboard">Dashboard</a>
               {{#if loggedIn}}
-              <button id="logout" class="btn-no-style">Logout</button>
+              <a class="nav-link" href="#" id="logout">Logout</a>
               {{else}}
               <a class="nav-link" href="/login">Log In</a>
               {{/if}}
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="https://github.com/brberis/dev-connect-portfolio-sharing">Contact Us</a>
           </nav>
         </div>
       </header>

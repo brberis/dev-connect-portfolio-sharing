@@ -1,0 +1,18 @@
+<div class="col-md-5 {{#if dashboard}} col-md-5 {{/if}} col-sm-12 article-detail">
+  <a href="/dashboard/projects/{{id}}" target="_blank">
+    <div>
+      <img src="{{image_url}}" alt="">
+    </div>
+  </a>
+  <div class="article-info">
+    <h4 {{#if dashboard}} class="mb-0" {{/if}}>{{title}}</h4>
+     <small class="text-warning ">{{{truncate_html description}}}</small> 
+  </div>
+  {{#if public}}
+  <div class="public text-success">
+    <i class="fa-sharp fa-solid fa-bullhorn"></i>
+  </div>
+  {{/if}}
+
+  
+</div>

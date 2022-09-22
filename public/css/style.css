@@ -49,6 +49,10 @@ main {
   margin: 10px;
 }
 
+.btn:hover {
+  color: rgb(107, 186, 255);
+}
+
 .hero {
   height: 550px;
 }
@@ -96,7 +100,17 @@ article {
   border: 5px solid rgb(236, 217, 254);
   position: relative;
 }
+
+.article-one-project {
+  width: 100%;
+}
   
+.article-one-project img {
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+}
+
 article img {
   width: 600px;
   height: 400px;
@@ -112,7 +126,7 @@ article img:hover {
 .article-info {
   position: absolute;
   bottom: 0px;
-  background-color: rgb(75, 65, 83);
+  background-color: rgb(39, 42, 78);
   opacity: 1;
   padding-left: 5px;
   padding-right: 10px;
@@ -121,8 +135,12 @@ article img:hover {
   height: 40%;
   -webkit-mask: linear-gradient(#0000, 2%, #000);
   mask: linear-gradient(#0000, 2%, #000);
-  
+}
 
+.public {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }
   
 article h4 {
@@ -130,6 +148,10 @@ article h4 {
   margin-top: 7px;
   font-size: 22px;
   margin-bottom: 30px;
+}
+
+.no-opacity img {
+  opacity: 1;
 }
 
 .form-text {
@@ -141,6 +163,7 @@ article h4 {
   margin-bottom: 100px;
 }
 
+
 .add-project{
   text-align: left;
   font-size: medium;
@@ -151,73 +174,9 @@ footer {
   padding: 50px;
 }
 
-
-
-/* 
-body {
-    background-color: rgb(73, 26, 116);
-    font-family: 'Inconsolata', monospace;
-    margin: 0;
-    padding: 0;
+/* media query 575px start */
+@media screen and (max-width: 575px) {
+  .article-detail {
+    width: 108%;
+  }
 }
-
-main {
-    background-color: rgb(213, 194, 232);
-}
-
-.text-center .h3 {
-    color: white;
-    font-size: 40px;
-    font-weight: 700;
-    margin: 0;
-    padding: 0;
-    padding-top: 60px;
-}
-
-.text-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.form-control {
-    width: 600px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 10;
-    background-color: rgb(73, 26, 116);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-color: white;
-}
-
-.btn {
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 10;
-    border-color: darkgrey;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: darkgrey;
-    margin: auto;
-}
-
-footer {
-    color: white;
-}
-
-p {
-    font-size: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-} */
-

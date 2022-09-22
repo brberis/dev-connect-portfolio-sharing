@@ -1,0 +1,25 @@
+<section class="project-streamer mt-0" id="project-streamer">
+  <div class="title">
+    <h1>{{developer}}</h1>
+    <p class="lead mb-4">Personal portfolio.</p>
+  </div>
+  <hr>
+
+  <div class="content">
+    <div class="main-content">
+      {{#if projects.length}}
+        <article class="row">
+          {{#each projects as |project|}}
+            {{> project-streamer project truncate='truncate'}}
+          {{/each}}
+        </article>
+        {{else}}
+          <p class="mb-5">
+            No public projects yet.
+          </p>
+        {{/if}}
+    </div>
+  </div>
+</section>
+
+

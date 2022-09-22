@@ -1,0 +1,19 @@
+<section class="project-streamer mt-0" id="project-streamer">
+  <div class="title">
+    <h1>Project Streamer</h1>
+    <p class="lead mb-4">Browse public projects.</p>
+  </div>
+  <hr>
+
+  <div class="content">
+    <div class="main-content">
+      <article class="row">
+        {{#each projects as |project|}}
+          {{> project-streamer project truncate='truncate'}}
+        {{/each}}
+      </article>
+    </div>
+  </div>
+</section>
+
+

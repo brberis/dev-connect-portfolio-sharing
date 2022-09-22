@@ -21,7 +21,7 @@ module.exports = {
       return word;
   },
   truncate_html: (str, len) => {
-    return clip(str, 200, { html: true, maxLines: 2 });
+    return clip(str, 30, { html: true, maxLines: 2 });
   },
   comment_owner: (commentUsername, username) => {
     if (commentUsername === username) {

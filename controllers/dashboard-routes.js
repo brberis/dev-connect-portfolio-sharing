@@ -46,6 +46,55 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+router.get('/projects/:id', withAuth, (req, res) => {
+    Project.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'title',
+            'image_url',
+            'description',
+            'github_url',
+            'date',
+            'public',
+            'user_id',
+            'created_at'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'project_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
+    })
+    .then(dbProjectData => {
+        if (!dbProjectData) return res.status(404).json({ message: 'No project found with this id' });
+
+        const project = dbProjectData.get({ plain: true })
+        res.render('my-project', {
+            project,
+            loggedIn: true,
+            loggedUser: req.session.username
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 router.get('/edit/:id', withAuth, (req, res) => {
     Project.findOne({
         where: {

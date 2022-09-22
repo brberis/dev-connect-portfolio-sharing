@@ -8,6 +8,9 @@ router.get('/', (req, res) => {
         where: {
             public: true
           },        
+          order: [
+            ['id', 'DESC']
+          ],
           attributes: [
             'id',
             'title',
@@ -32,7 +35,8 @@ router.get('/', (req, res) => {
                 model: User,
                 attributes: ['username']
             }    
-        ]
+        ],
+        limit:4
     })
     .then(dbProjectData => {
         const projects = dbProjectData.map(project => project.get({ plain: true }));
@@ -50,7 +54,8 @@ router.get('/', (req, res) => {
 router.get('/project/:id', (req, res) => {
     Project.findOne({
         where: {
-            id: req.params.id
+            id: req.params.id,
+            public: true
         },
         attributes: [
             'id',
@@ -87,7 +92,8 @@ router.get('/project/:id', (req, res) => {
 
         res.render('single-project', {
             project,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            loggedUser: req.session.username
         });
     })
     .catch(err => {

@@ -1,7 +1,5 @@
-<section class="container ">
+<section class="container mt-3">
   <div class="row pt-0">
-    <a class="text-primary" href="/"> Home</a>
-    <a class="text-primary" href="#"> &nbsp;/ Dashboard</a>
     <div class="col-12 mt-2">
       <div class="accordion" id="new-post">
         <div class="accordion-item">
@@ -38,7 +36,7 @@
                   </div>
                   <div class="col-8 form-group">
                     <label for="public" class="font-weight-bold">Public</label>
-                    <input type="checkbox" id="public" name="public">
+                    <input type="checkbox" id="public" name="public" {{bindAttr checked="public"}}>
                   </div>
                   <div class="col-3 form-group">
                     <button type="submit" class="btn">Create</button>
@@ -54,18 +52,18 @@
 </section>
 <hr />
 
-<section class="container">
-  <h2 class="mt-5 mb-5">Your Portfolio</h2>
+<section class="container mb-5">
+  <h2 class="mt-5 mb-5">My Portfolio</h2>
   {{#if projects.length}}
-  <ul>
-    {{#each projects as |project|}}
-    <li class="mb-5">
-      
-      {{> project-info project truncate='truncate' dashboard='dashboard'}}
-      <a class="text-primary" href="/dashboard/edit/{{projects.id}}">Edit Project</a>
-    </li>
-    {{/each}}
-  </ul>
+  <div class="content">
+    <div class="main-content">
+      <article class="row">
+        {{#each projects as |project|}}
+          {{> my-projects project truncate='truncate' dashboard='dashboard'}}
+        {{/each}}
+      </article>
+    </div>
+  </div>
   {{else}}
   <p class="mb-5">
     You don't have any project yet. Start now!

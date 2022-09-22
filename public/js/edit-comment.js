@@ -3,7 +3,7 @@ async function editFormHandler(event) {
     event.preventDefault();
   
     const commentText = document.querySelector('textarea[name="commentText"]').value.trim();
-    var postId = document.querySelector('input[name="postId"]').value.trim();
+    var projectId = document.querySelector('input[name="projectId"]').value.trim();
   
     const id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
@@ -20,7 +20,7 @@ async function editFormHandler(event) {
   
     if (response.ok) {
       console.log("RES", response);
-      document.location.replace('/post/' + postId);
+      document.location.replace('/project/' + projectId);
     } else {
       alert(response.statusText);
     }

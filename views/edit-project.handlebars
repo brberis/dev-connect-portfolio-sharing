@@ -1,61 +1,51 @@
-<section class="container ">
+<section class="container mb-5">
   <div class="row pt-3">
-    <a class="text-primary" href="/"> Home</a>
-    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
-    <a class="text-primary" href="#"> &nbsp;/ Edit</a>
     <div class="col-12 mt-2">
       <h2 class="mt-2 mb-3">
-        Edit project
+        Edit Project
       </h2>
-      <form class="edit-project-form">
-        <div class="col-12 form-group">        
-        <label for="project-title" class="font-weight-bold">Title</label>
-          <input class="form-control" name="project-title" type="text" value="{{project.title}}" />
-        </div>
-        <div class="col-12 form-group">
-          <label for="content" class="font-weight-bold">Content</label>
-          <input type="hidden" value="{{project.content}}" id="content" name="content"></input>
-          <trix-editor class="trix-content" input="content"></trix-editor>
-        </div>
-        <div>
-          By you on {{format_date project.created_at}}
-          |
-          <a class="text-primary" href="/project/{{project.id}}">{{project.comments.length}} {{format_plural "comment" project.comments.length}}</a>
-        </div>
-
-        <div class="form-inline justify-content-end">
-          <div class="col-3">
-            <button type="button" class="delete-project-btn btn">Delete project</button>
+      <div class="add-project">
+        <form class="edit-project-form">
+          <div class="col-12 form-group">        
+            <label for="project-title" class="font-weight-bold">Title</label>
+            <input class="form-control" name="project-title" type="text" value="{{project.title}}" />
           </div>
-          <div class="col-3">
-            <button type="submit" class="edit-project-form btn">Save project</button>
+          <div class="col-8 form-group">
+            <label for="image-url" class="font-weight-bold">Screenshot</label>
+            <input class="form-control" type="text" id="image-url" placeholder="Image URL" value="{{project.image_url}}" name="image-url" />
           </div>
-        </div>
-
-      </form>
-    </div>
-  </div>
-</section>
-
-<section class="container mt-5">
-  <div class="row pt-3">
-    <div class="col-12">
-      <form class="comment-form">
-        <div class="col-9 form-group">
-          <textarea class="form-control"  name="comment-body"></textarea>
-        </div>
-
-        <div class="col-3 form-group">
-          <button class="comment-form btn" type="submit">Add Comment</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-<section class="container mt-5">
-  <div class="row pt-3">
-    <div class="col-12">
-      {{> comments project.comments}}
+          <div class="col-12 form-group">
+            <label for="description" class="font-weight-bold">Description</label>
+            <input type="hidden" value="{{project.description}}" id="description" name="description"></input>
+            <trix-editor class="trix-content" input="description"></trix-editor>
+          </div>
+          <div class="col-8 form-group">
+            <label for="date" class="font-weight-bold">Date</label>
+            <input type="date" id="date" name="date" value="{{project.date}}"></input>
+          </div>
+          <div class="col-8 form-group">
+            <label for="github-url" class="font-weight-bold">GitHub URL</label>
+            <input class="form-control" type="text" id="github-url" placeholder="" value="{{project.github_url}}" name="github-url" />
+          </div>
+          <div class="col-8 form-group">
+            <label for="public" class="font-weight-bold">Public</label>
+            <input type="checkbox" id="public" name="public" {{#if project.public}}checked{{/if}}>
+          </div>
+          <div>
+            By you on {{format_date project.created_at}}
+            |
+            <a class="text-primary" href="/project/{{project.id}}">{{project.comments.length}} {{format_plural "comment" project.comments.length}}</a>
+          </div>
+          <div class="form-inline justify-content-end">
+            <div class="col-3">
+              <button type="button" class="delete-project-btn btn">Delete project</button>
+            </div>
+            <div class="col-3">
+              <button type="submit" class="edit-project-form btn">Save project</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>

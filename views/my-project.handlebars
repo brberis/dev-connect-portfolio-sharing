@@ -1,19 +1,29 @@
-<section class="container ">
+<section class="container add-project mt-5">
   <div class="row pt-0">
-    <a class="text-primary" href="/"> Home</a>
-    <a class="text-primary" href="/dashboard"> &nbsp;/ Dashboard</a>
-    <a class="text-primary" href="#"> &nbsp;/ My project</a>
     <div class="col-12 mt-2">
       <article class="project">
         <div class="title">
-          
-          <h4>{{project.title}}</h4>
+          <h2 class="text-dark">{{project.title}}</h3>
+        </div>
+        <div class="article-detail no-opacity article-one-project col-12">
+          <img src="{{project.image_url}}" alt="">
+        </div>
+        <hr>
+        <div class="content">
+          <h3 class="text-dark">Description:</h3>
+          <p class="text-dark">{{{project.description}}}</p>
         </div>
         <div class="content">
-          <p>{{{project.content}}}</p>
+          GitHub: <span><a href="project.github_url">{{format_url project.github_url}}</a></span>
+        </div>
+        <div class="content">
+          Date: <span>{{format_date project.date}}</span>
+        </div>
+        <div class="content">
+          Public: <span>{{#if project.public}} Yes {{else}} No {{/if}}</span>
         </div>
         <div class="font-italic">
-          by <span class="font-weight-bold">{{project.user.username}}</span> on {{format_date project.created_at}}
+          by you on {{format_date project.created_at}}
           |
           <a href="/project/{{project.id}}" class="text-primary">{{project.comments.length}} {{format_plural "comment" project.comments.length}}</a>
         </div>
@@ -37,11 +47,11 @@
     <div class="col-12">
       {{#if project.comments}}
       <h4 class="mb-3">Comments</h4>
-      <div class="comments">
+      <div class="bg-light add-project">
         {{#each project.comments}}
         <section class="comment p-3 bg-comment">
           <div class="meta">
-            <span class="font-weight-bold">{{user.username}}</span> on {{format_date created_at}}
+            <span class="font-weight-bold"><a href="/developer/{{user.username}}">{{user.username}}</a></span> on {{format_date created_at}}
           </div>
           <div class="text">
             {{comment_text}}
@@ -72,12 +82,14 @@
   <div class="row pt-3">
     <div class="col-12">
       <form class="comment-form">
+        <div class="text-left ml-3">
+          <h6> Enter comment:</h6>
+        </div>
         <div class="col-9 form-group">
           <textarea class="form-control"  name="comment-body"></textarea>
         </div>
-
-        <div class="col-3 form-group">
-          <button class="comment-form btn" type="submit">Add Comment</button>
+        <div class="col-9 form-inline justify-content-end">
+          <button class="comment-form btn " type="submit">Add Comment</button>
         </div>
       </form>
     </div>

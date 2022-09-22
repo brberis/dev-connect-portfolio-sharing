@@ -1,18 +1,9 @@
-<article class="post">
-  <div class="title">
-    {{#if dashboard }}
-    <h4><a class="text-dark" href="/dashboard/my-projects/{{id}}">{{title}} </a></h4>
-    {{else}}
-    <h4><a class="text-dark" href="/projects/{{id}}">{{title}}</a></h4>
-    {{/if}}
+<div class="col-md-5 col-sm-12 article-detail">
+  <a href="/project/{{id}}" target="_blank">
+    <img src="{{image_url}}" alt="">
+  </a>
+  <div class="article-info">
+    <h4>{{title}}</h4>
+    <p>{{user.username}}</p>
   </div>
-  <div class="content">
-    <p {{#if truncate}} class="truncate" {{/if}}>{{{truncate_html content}}}</p>
-  </div>
-  <div class="font-italic">
-    by <span class="font-weight-bold">{{user.username}}</span> on {{format_date created_at}}
-    |
-    <a href="/projects/{{id}}" class="text-primary">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-  </div>
-</article>
-<hr />
+</div>

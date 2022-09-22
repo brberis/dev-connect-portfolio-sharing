@@ -33,6 +33,33 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+// edit comment
+router.put('/:id', withAuth, (req, res) => {
+    Comment.update(
+      {
+        comment_text: req.body.commentText,
+      },
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id
+        }
+      }
+    )
+      .then(dbCommentData => {
+        if (!dbCommentData) {
+          res.status(404).json({ message: 'No comment found with this id' });
+          return;
+        }
+        res.json(dbCommentData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
+
 router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
         where: {
@@ -44,7 +71,7 @@ router.delete('/:id', withAuth, (req, res) => {
             res.status.apply(404).json({ message: 'No comment found with this id!' });
             return;
         }
-        res.json(dbCOmmentData);
+        res.json(dbCommentData);
     })
     .catch(err => {
         console.log(err);
