@@ -1,24 +1,18 @@
 <div class="col-md-5 {{#if dashboard}} col-md-6 {{/if}} col-sm-12 article-detail">
-  <a href="/project/{{id}}" target="_blank">
+  <a href="/project/{{id}}">
     <img src="{{image_url}}" alt="">
-  </a>
-  <div class="article-info">
-    <h4 class="mb-0" >{{title}}</h4>
-    {{#if dashboard}}
-     <span class="text-warning">{{{truncate_html description}}}</span> 
-    {{else}}
-      <p class="mt-0">{{user.username}}</p>
-    {{/if}}
-  </div>
-  {{#if public}}
-  <div class="public text-success">
-    <i class="fa-sharp fa-solid fa-bullhorn"></i>
-  </div>
-  {{/if}}
+    <div class="article-info">
+      <h4 class="mb-0" >{{title}}</h4>
+      {{#if dashboard}}
+      <span class="text-warning">{{{truncate_html description}}}</span> 
+      {{else}}
+        <p class="mt-0">{{user.username}}</p>
+      {{/if}}
+    </div>
     {{#if public}}
-  <div class="public text-success">
-    <i class="fa-sharp fa-solid fa-bullhorn"></i>
-  </div>
-  {{/if}}
-  edit-btn 
+    <div class="public text-success">
+      <i class="fa-sharp fa-solid fa-bullhorn"></i>
+    </div>
+    {{/if}}
+  </a>
 </div>
