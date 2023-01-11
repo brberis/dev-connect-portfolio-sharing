@@ -22,6 +22,7 @@ The technologies used within our project include html, javascript, css,  handleb
 - [Deployed Link](#Deployed-Link)
 - [Features](#features)
 - [Dependencies](#dependencies)
+- [How to Install](#how-to-install)
 - [How to Contribute](#how-to-contribute)
 - [Credits](#credits)
 - [Questions](#questions)
@@ -58,6 +59,24 @@ The technologies used within our project include html, javascript, css,  handleb
 ## Live Demo
 
 This project is deployed on Heroku. Demo site [here](https://dev-connect-portfolio-sharing.herokuapp.com/).
+
+## How to Install
+
+To install Dev-Connect platform on your machine, please follow these steps:
+
+1. Clone the repository by running the command git clone: 
+[https://github.com/brberis/dev-connect-portfolio-sharing.git](https://github.com/brberis/dev-connect-portfolio-sharing.git)
+2. Navigate to the root of the project directory using the command `cd repo-name`.
+3. Run `npm install` to install all the necessary dependencies.
+4. Set up the required environment variables by creating a .env file in the root of the project directory and adding the necessary environment variable key-value pairs.
+5. Start the development server by running the command `npm run start`
+7. In the browser navigate to `http://localhost:3000` to access the app
+
+### Note:
+- Make sure that you have the latest version of Node.js and npm installed on your machine
+- Make sure you have MySQL installed and running before start the development server. 
+- After you finish with the installation and setup, don't forget to remove .env file from the repo before committing.
+
 
 ## How to Contribute
 
