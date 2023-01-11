@@ -69,7 +69,7 @@ To install Dev-Connect platform on your machine, please follow these steps:
 2. Navigate to the root of the project directory using the command `cd repo-name`.
 3. Run `npm install` to install all the necessary dependencies.
 4. Set up the required environment variables by creating a .env file in the root of the project directory and adding the necessary environment variable key-value pairs.
-5. Start the development server by running the command `npm run start`
+5. Start the development server by running the command `npm start`
 7. In the browser navigate to `http://localhost:3000` to access the app
 
 ### Note:
