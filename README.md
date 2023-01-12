@@ -13,6 +13,11 @@ Our app is a social media specifically for developers. Allowing users to create 
 Our motivation for development came from seeing github as a great place to share code, but not easy to share with all of your colleagues at once, so we added aspects that we like on other social media websites. We want our users to be able to share there work in a smoother and more concise way. Our website was created for developers but is also easy to use for friends and family that may not be so tech savvy but are interested in learning more.
 The technologies used within our project include html, javascript, css,  handlebars, dotenv, bcrypt, sequelize, mysql, jest, textclipper, trix, amd express.
 
+## User Story
+
+As a developer, I want to be able to easily share my work and connect with other professionals in my field, so that I can stay up-to-date with the latest developments and expand my network.
+
+
 ## Screenshot
 
 ![alt screenshot](https://github.com/brberis/dev-connect-portfolio-sharing/blob/main/assets/images/web.png?raw=true)
